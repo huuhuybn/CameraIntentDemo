@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openCameraAPI(View view) {
-
-
+        Intent intent = new Intent(this, CameraAPIActivity.class);
+        startActivity(intent);
     }
 
     @Override
