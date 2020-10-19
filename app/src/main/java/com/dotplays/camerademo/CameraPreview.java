@@ -1,10 +1,14 @@
 package com.dotplays.camerademo;
 
+import android.app.Activity;
 import android.content.Context;
 import android.hardware.Camera;
 import android.util.Log;
+import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+
+import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 
@@ -12,8 +16,11 @@ public class CameraPreview  extends SurfaceView implements SurfaceHolder.Callbac
     private SurfaceHolder mHolder;
     private Camera mCamera;
 
+    private Context context;
+
     public CameraPreview(Context context, Camera camera) {
         super(context);
+        this.context = context;
         mCamera = camera;
         // Install a SurfaceHolder.Callback so we get notified when the
         // underlying surface is created and destroyed.
@@ -58,6 +65,7 @@ public class CameraPreview  extends SurfaceView implements SurfaceHolder.Callbac
 
         // start preview with new settings
         try {
+
             mCamera.setPreviewDisplay(mHolder);
             mCamera.startPreview();
 
@@ -65,4 +73,5 @@ public class CameraPreview  extends SurfaceView implements SurfaceHolder.Callbac
             Log.d("TAG", "Error starting camera preview: " + e.getMessage());
         }
     }
+
 }
